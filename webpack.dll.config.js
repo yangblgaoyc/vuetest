@@ -2,13 +2,11 @@ const webpack = require('webpack');
 const path = require("path");
 const fs=require('fs');
 const vendors = [
-    'react', //这里添加第三方库文件
-    'react-dom',
-    'react-router-dom'
+    'vue', //这里添加第三方库文件
+    'vue-router'
 ];
 
 module.exports = {
-
     entry: {
         vendor: vendors,
     },

@@ -8,6 +8,7 @@ const os = require('os');//os.cpus().Length 一般会取不到值，这里直接
 const HappyPack = require('happypack');
 // const happypackThreadPool = Happypack.ThreadPool({size:4});//size:os.cpus().Lengt根据电脑的idle，配置当前最大的线程数量
 const happypackThreadPool = HappyPack.ThreadPool({ size: os.cpus().length });
+const VueLoaderPlugin = require('vue-loader/lib/plugin')
 function recursiveIssuer(m) {
     if (m.issuer) {
         return recursiveIssuer(m.issuer);
@@ -31,7 +32,7 @@ module.exports = {
 
     entry: {
         home:'./src/home.js',
-        index:'./src/index.js'
+        // index:'./src/index.js'
         // home:[
         //     'webpack-dev-server/client?http://localhost:8080',  // 热更新监听此地址
         //     'webpack/hot/dev-server',  // 启用热更新
@@ -54,17 +55,18 @@ module.exports = {
         // publicPath:'/'
     },
     plugins : [
+        new VueLoaderPlugin(),
         new HtmlWebpackPlugin({
             filename: 'home.html',
             template : 'src/home.ejs',
             chunks:['home']
         }),
-        new HtmlWebpackPlugin({
-            title:'<%- component %>',
-            filename: 'index.html',
-            template : 'src/index.ejs',
-            chunks:['index']
-        }),
+        // new HtmlWebpackPlugin({
+        //     title:'<%- component %>',
+        //     filename: 'index.html',
+        //     template : 'src/index.ejs',
+        //     chunks:['index']
+        // }),
         // new cleanWebpackPlugin(['build']),
         // new ExtractTextPlugin("styles.css"),   //插件声明
         new MiniCssExtractPlugin({
@@ -97,7 +99,13 @@ module.exports = {
     module:{
         rules:[
             {
-                test:/\.(js|jsx)$/,
+                test:/\.vue$/,
+                loader:'vue-loader'
+                //这一个loader当然是vue项目必须的加载器啦，不加其他规则的话，
+                //简单的这样引入就可以了，vue-loader会把vue单文件直接转成js。
+            },
+            {
+                test:/\.js$/,
                 // exclude:/(node_modules|bower_components)/,//排除XXX类型文件
                 enforce:'pre',
                 loader:'eslint-loader',
@@ -152,7 +160,7 @@ module.exports = {
     devtool:'eval-soure-map',
 
     resolve:{
-        extensions:['.js','jsx','less','.css','.scss']//后缀名自动补全
+        extensions:['.js','less','.css','.scss','.vue']//后缀名自动补全
     },
 
     devServer:{
