@@ -160,7 +160,10 @@ module.exports = {
     devtool:'eval-soure-map',
 
     resolve:{
-        extensions:['.js','less','.css','.scss','.vue']//后缀名自动补全
+        extensions:['.js','less','.css','.scss','.vue'],//后缀名自动补全
+        alias: {
+            vue: 'vue/dist/vue.js',
+        }
     },
 
     devServer:{
