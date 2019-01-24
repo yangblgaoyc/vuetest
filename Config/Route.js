@@ -1,10 +1,7 @@
-import Vue from 'vue'
-import VueRouter from 'vue-router';
-
 import HomeComponent from '../component/Home.vue';//引进组件
 // import News from '../component/News.vue';//引进组件
-// import Detail from '../component/Details.vue';//引进组件
 import NoPage from '../component/404.vue';//引进组件
+import Detail from '../component/Details';//引进组件
 
 const routes =[
     {
@@ -13,7 +10,12 @@ const routes =[
         component: HomeComponent
     },
     {
-        path: '',
+        path: '/details',
+        name: 'Detail',
+        component: Detail
+    },
+    {
+        path: '*',
         name: 'NoPage',
         component: NoPage
     }
