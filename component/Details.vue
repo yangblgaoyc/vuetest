@@ -1,7 +1,7 @@
 <template>
     <div id='detail_container'>
-        <DetailTitle :data='info'></DetailTitle>
-        <DetailContents :data='contents'></DetailContents>>
+        <DetailTitle :info='info'></DetailTitle>
+        <DetailContents :contents='contents'></DetailContents>
     </div>
 </template>
 <script>

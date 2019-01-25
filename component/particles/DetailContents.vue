@@ -1,6 +1,6 @@
 <template>
     <div id="detail_contents">
-        {{contents.data}}
+        {{contents}}
     </div>
 </template>
 <script>

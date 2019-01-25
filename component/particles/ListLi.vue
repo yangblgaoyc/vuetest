@@ -1,6 +1,6 @@
 <template>
-    <li class="list_li">
-        <router-link to="/details">
+    <router-link to="/details">
+        <li class="list_li">
             <img :src='data.img'/>
             <dl>
                 <dt>{{data.title}}</dt>
@@ -9,8 +9,8 @@
                     <em>{{data.times}}阅读</em>
                 </dd>
             </dl>
-        </router-link>
-    </li>
+        </li>
+    </router-link>
 </template>
 <script>
     export default {
