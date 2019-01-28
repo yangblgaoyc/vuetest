@@ -1,5 +1,6 @@
 <template>
-    <router-link to="/details">
+    <!--路由连接里如有name,其值必须与总路由里一样，否则跳转后第一次白页-->
+    <router-link :to="{path:'/details',query:{id:data.id,categoryid:data.categoryId}}">
         <li class="list_li">
             <img :src='data.img'/>
             <dl>

@@ -13,6 +13,14 @@
         data (){
             return {}
         },
-        props:['info']
+        props:['info'],
+        created(){
+            //获取传入的参数
+            const id = this.$route.query.id;
+            const categoryid = this.$route.query.categoryid;
+            console.log(id,categoryid)
+            //如果使用query方式传入的参数使用this.$route.query 接收
+            //如果使用params方式传入的参数使用this.$router.params接收
+        }
     }
 </script>
