@@ -6,7 +6,6 @@
             <template v-for="(value) in lists">
                 <ListLi :data='value'></ListLi>
             </template>
-
         </ul>
     </div>
 </template>

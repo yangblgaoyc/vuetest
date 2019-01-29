@@ -2,14 +2,15 @@
     <div id="news_container">
         <Return />
         <Stock />
+        <Category/>
     </div>
 </template>
 <script>
     import Return from './particles/ReturnIndex';
     import Stock from './particles/Stock';
-    // import Category from './particles/Category';
+    import Category from './particles/Category';
     export default {
-        components: {Return,Stock},
+        components: {Return,Stock,Category},
         data () {
             return {}
         }

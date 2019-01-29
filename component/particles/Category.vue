@@ -1,13 +1,17 @@
 <template>
     <div id="category_out">
-        <div className='swiper-container' id='category'>
-            <div className='swiper-wrapper' v-for="(category,index) in categorys">
-                <div className={index === this.state.curr ? swiperSlideStatusOn : swiperSlideStatusNo} onClick={this.handleClick.bind(this, index)}>
-                <i className={className} />
-                <p>{category.name}</p>
+        <div class='swiper-container' id='category'>
+            <div class='swiper-wrapper'>
+                <div :class="index === state.curr ? swiperSlideStatusOn : swiperSlideStatusNo" @click="handleClick(index)" v-for="(category,index) in categorys">
+                    <i :class="'fa fa-' + category.imgIcon + ' fa-2x'" />
+                    <p>{{category.name}}</p>
+                </div>
             </div>
         </div>
         <ul id="category_content" >
+            <template v-for="(value) in lists">
+                <ListLi :data='value'></ListLi>
+            </template>
         </ul>
     </div>
 </template>
@@ -19,6 +23,9 @@
         data () {
             return {
                 arrowImg:'images/ball.png',
+                state : {curr:0},
+                swiperSlideStatusOn:'swiper-slide on',
+                swiperSlideStatusNo:'swiper-slide',
                 categorys : [
                     {
                         'name' : '早知道',
@@ -37,7 +44,7 @@
                         'imgIcon': 'user'
                     }
                 ],
-                list: [
+                lists: [
                     {
                         'img':"images/icon_j20.jpg",
                         'title':'漂亮的歼20',
@@ -89,12 +96,23 @@
                 ]
             }
         },
+        methods: {
+            handleClick: function (index) {
+                this.state.curr = index;
+            }
+        },
+        computed: {
+        },
         created(){
             //这里可以在render前修改数据
-            this.category.unshift({
+            this.categorys.unshift({
                 'name' : '全部',
                 'imgIcon': 'windows'
             });
+            // this.categorys.forEach(function(item){
+            //     item.className = 'fa fa-' + item.imgIcon + ' fa-2x';
+            // });
+
         },
         mounted(){
             const mySwiper = new Swiper('#category', {

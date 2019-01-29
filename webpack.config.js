@@ -32,7 +32,7 @@ module.exports = {
 
     entry: {
         home:'./src/home.js',
-        // index:'./src/index.js'
+        index:'./src/index.js'
         // home:[
         //     'webpack-dev-server/client?http://localhost:8080',  // 热更新监听此地址
         //     'webpack/hot/dev-server',  // 启用热更新
@@ -61,12 +61,12 @@ module.exports = {
             template : 'src/home.ejs',
             chunks:['home']
         }),
-        // new HtmlWebpackPlugin({
-        //     title:'<%- component %>',
-        //     filename: 'index.html',
-        //     template : 'src/index.ejs',
-        //     chunks:['index']
-        // }),
+        new HtmlWebpackPlugin({
+            title:'<%- component %>',
+            filename: 'index.html',
+            template : 'src/index.ejs',
+            chunks:['index']
+        }),
         // new cleanWebpackPlugin(['build']),
         // new ExtractTextPlugin("styles.css"),   //插件声明
         new MiniCssExtractPlugin({
