@@ -2,10 +2,10 @@
  * Created by yangbolun on 2019/1/11.
  */
 
-const Vue = require('vue');
+import Vue from 'vue';
 const renderer = require('vue-server-renderer').createRenderer();
-import Banner from '../spaSsrcomponent/Banner';
-import ColumnTitle from '../spaSsrcomponent/ColumnTitleIndex';
+import Banner from '../spaSsrcomponent/Banner.vue';
+// import ColumnTitle from '../spaSsrcomponent/ColumnTitleIndex';
 
 module.exports = function(app) {
     const data = [
@@ -26,15 +26,14 @@ module.exports = function(app) {
         data: {
             data: data
         },
-        template: `<div>访问的 URL 是： {{ url }}</div>`
+        template: `<div>访问的 URL 是： </div>`,
+        // components: { Banner }
     })
 
-    renderer.renderToString(app, (err, html) => {
-    });
-
-
-    app.get('/index', function (req, res) {
-
-        res.render('index', {component:ssrDomStr});
+    renderer.renderToString(index, (err, html) => {
+        console.log(html)
+        app.get('/index', function (req, res) {
+            res.render('index', {component:html});
+        });
     });
 };

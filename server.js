@@ -42,7 +42,7 @@ function readDirSync(path) {
 }
 
 //路由引入
-// readDirSync('./controller');
+readDirSync('./controller');
 
 app.get('*', function (req, res) {
     res.sendFile(__dirname+'/build/home.html');
