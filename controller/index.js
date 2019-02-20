@@ -3,10 +3,12 @@
  */
 
 import Vue from 'vue';
+// const renderer = require('vue-server-renderer');
 const renderer = require('vue-server-renderer').createRenderer();
-import Banner from '../spaSsrcomponent/Banner.vue';
+// import Banner from '../spaSsrcomponent/Banner.vue';
 // import ColumnTitle from '../spaSsrcomponent/ColumnTitleIndex';
-
+var haha = require('fs').readFileSync('./spaSsrcomponent/Banner.vue', 'utf-8');
+console.log(haha)
 module.exports = function(app) {
     const data = [
         {
@@ -26,10 +28,10 @@ module.exports = function(app) {
         data: {
             data: data
         },
-        template: `<div>访问的 URL 是： </div>`,
+        template: `<div>Hello World</div>`,
         // components: { Banner }
     })
-
+    //
     renderer.renderToString(index, (err, html) => {
         console.log(html)
         app.get('/index', function (req, res) {
